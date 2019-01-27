@@ -75,11 +75,11 @@ def valid_ipv4_mask(candidate):
                 invalid_octet = True
                 if octet in valid_octets:
                     invalid_octet = False
-                if (invalid_octet == True):
+                if invalid_octet:
                     valid_mask = False
 
             # verify contiguous ones for the entire decimal mask
-            if valid_mask == True:
+            if valid_mask:
                 if (mask_components[0] < 255):
                     if (mask_components[1] > 0 or mask_components[2] > 0 
                         or mask_components[3] > 0):
