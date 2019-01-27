@@ -16,6 +16,8 @@
 # python version: 3.7.2
 
 
+import socket
+
 
 # is_ipv4_format
 # verify supplied string is valid IPv4 address format
@@ -265,7 +267,6 @@ def is_ipv4_range(start_ip, end_ip):
 # created: 12/26/18
 # last modified: 12/26/18
 def dns_resolves(hostname):
-    import socket
     dns_resolves = True
     
     try:
