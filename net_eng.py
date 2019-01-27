@@ -51,8 +51,8 @@ def is_ipv4_format(candidate):
 #   can verify cidr-based mask
 #   or decimal mask of four octets
 # returns: True or False
-# created: 12/29/18
-# last modified: 01/26/19
+# created: 2018-12-29
+# last modified: 2019-01-27
 def valid_ipv4_mask(candidate):
     valid_mask = True
     
@@ -135,8 +135,8 @@ def cidr_to_dec_mask(cidr_mask):
 #   verifies address is not in some reserved ranges not common in production or testing
 #   comment or uncomment preferred reserved address checks per your preference
 # returns: True or False
-# created: 12/28/18
-# last modified: 01/26/19
+# created: 2018-12-28
+# last modified: 2019-01-27
 def valid_ipv4_unicast(candidate):
     valid_unicast = True            
 
@@ -147,7 +147,7 @@ def valid_ipv4_unicast(candidate):
         valid_unicast = is_ipv4_format(candidate)
 
         # octet value checks
-        if valid_unicast != False:
+        if valid_unicast:
             # verify first octet is not multicast or experimental (also catches broadcast)
             if (octets[0] > 223):
                 valid_unicast = False
@@ -198,7 +198,7 @@ def valid_ipv4_unicast(candidate):
 # verify supplied string is valid IPv4 multicast address
 # returns: True or False
 # created: 2019-01-26
-# last modified: 2019-01-26
+# last modified: 2019-01-27
 def is_ipv4_mcast(candidate):
     is_mcast = True            
 
@@ -206,7 +206,7 @@ def is_ipv4_mcast(candidate):
         # verify supplied string conforms to IPv4 format
         is_mcast = is_ipv4_format(candidate)
 
-        if is_mcast != False:
+        if is_mcast:
             octets = list(map(int, candidate.split('.')))
 
             # verify first octet valid multicast value
