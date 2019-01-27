@@ -46,4 +46,5 @@ returns string of 'disable' or 'enable'
 
 -----
 Required Python modules:
+socket
 
