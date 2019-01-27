@@ -2,7 +2,7 @@
 
 # author: jason mueller
 # created: 2018-12-26
-# last modified: 2018-01-26
+# last modified: 2018-01-27
 
 # purpose:
 # common functions I have used over the years when Python scripting against 
@@ -224,7 +224,7 @@ def is_ipv4_mcast(candidate):
 #   note: there is no check if the range crosses reserved address space
 # returns: True or False
 # created: 2019-01-07
-# last modified: 2019-01-26
+# last modified: 2019-01-27
 def is_ipv4_range(start_ip, end_ip):
     valid_range = False
     
@@ -232,7 +232,7 @@ def is_ipv4_range(start_ip, end_ip):
         start_valid = valid_ipv4_unicast(start_ip)
         end_valid = valid_ipv4_unicast(end_ip)
                 
-        if (start_valid == True and end_valid == True):
+        if (start_valid and end_valid):
             start_octets = list(map(int, start_ip.split('.')))
             end_octets = list(map(int, end_ip.split('.')))
 
@@ -264,8 +264,8 @@ def is_ipv4_range(start_ip, end_ip):
 
 # verify the supplied string has a valid DNS hostname associated with it
 # returns: True or False
-# created: 12/26/18
-# last modified: 12/26/18
+# created: 2018-12-26
+# last modified: 2018-12-26
 def dns_resolves(hostname):
     dns_resolves = True
     
