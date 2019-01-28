@@ -1,5 +1,5 @@
 # net_eng
-Python module with common network engineering functions used when scripting.
+__net_eng__ is a Python module with common network engineering functions used when scripting. Many functions are used to sanitize/validate input into a script.
 
 There are no explicit or implied guarantees or warranties with this module.
 See required Python modules below.
