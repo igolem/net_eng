@@ -7,12 +7,12 @@ See required Python modules below.
 -----
 ## Functions provided:
 
-1. __is_ipv4_format:__
-verifies a supplied IPv4 address is a decimal representation of four decimal octets.
+1. __is_ipv4_format:__\
+verifies a supplied IPv4 address is a decimal representation of four decimal octets.\
 returns True or False
 
-1. __valid_ipv4_mask:__
-verifies supplied IPv4 mask value is valid (both cidr and decimal-based masks).
+1. __valid_ipv4_mask:__\
+verifies supplied IPv4 mask value is valid (both cidr and decimal-based masks).\
 returns True or False
 
 1. __cidr_to_dec_mask:__
