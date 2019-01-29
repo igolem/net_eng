@@ -2,7 +2,7 @@
 
 # author: jason mueller
 # created: 2018-12-26
-# last modified: 2018-01-27
+# last modified: 2018-01-28
 
 # purpose:
 # common functions I have used over the years when Python scripting against 
@@ -259,6 +259,25 @@ def is_ipv4_range(start_ip, end_ip):
         return False
     
     return valid_range
+
+
+
+# is_unpriv_port
+# verify supplied integer (or int version of string) corresponds to an unprivileged TCP/UDP port
+# returns: True or False
+# created: 2019-01-28
+# last modified: 2019-01-28
+def is_unpriv_port(port):
+    unpriv_port = True
+
+    try:
+        if (int(port) < 1024 or int(port) > 65535):
+            unpriv_port = False
+
+    except:
+        unpriv_port = False
+    
+    return unpriv_port
 
 
 
