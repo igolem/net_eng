@@ -3,7 +3,7 @@
 # file: net_eng.py
 # author: jason mueller
 # created: 2018-12-26
-# last modified: 2018-01-28
+# last modified: 2021-02-06
 
 # purpose:
 # common functions I have used over the years when Python scripting against 
@@ -260,6 +260,80 @@ def is_ipv4_range(start_ip, end_ip):
         return False
     
     return valid_range
+
+
+
+# ipv4_pool_size()
+# given two IP addresses, determine the number of IP addresses within the range between
+# returns: the number of IPs in the range or False
+# created: 2021-01-30
+# last modified: 2021-01-30
+def ipv4_pool_size(pool_start, pool_end):
+    try:
+        if (is_ipv4_range(pool_start, pool_end)):
+            start_octets = list(map(int, pool_start.split('.')))
+            end_octets = list(map(int, pool_end.split('.')))
+
+            # calculate tne number of IP addresses in the IP pool
+            range_size = 0
+            range_size += (end_octets[0] - start_octets[0])*2**24
+            range_size += (end_octets[1] - start_octets[1])*2**16
+            range_size += (end_octets[2] - start_octets[2])*2**8
+            range_size += (end_octets[3] - start_octets[3]) + 1
+        
+            return range_size
+        else:
+            return False
+    except:
+        return False
+
+
+
+# ipv4_to_dec()
+# convert a standard dotted quad IP address format
+#     to its decimal number representation 
+# returns: the decimal value for an IP or False
+# created: 2021-01-30
+# last modified: 2021-01-30
+def ipv4_to_dec(quad_ip):
+    try:
+        if valid_ipv4_unicast(quad_ip):    
+            octets = list(map(int, quad_ip.split('.')))
+            ip_dec_value = octets[0]*2**24 + octets[1]*2**16 + octets[2]*2**8 + octets[3]
+            return ip_dec_value
+        else:
+            return False
+    except:
+        return False
+
+
+
+# dec_to_ipv4()
+# convert a decimal value representation of an IP address
+#     to its standard dotted quad decimal format
+# returns: a standard formatted IP or False
+# created: 2021-01-30
+# last modified: 2021-01-30
+def dec_to_ipv4(dec_ip_value):
+    try:
+        # determine assigned IP octet values by converting decimal representation to IP
+        assign_octet = [None] * 4
+        assign_octet[0] = dec_ip_value//2**24
+        dec_ip_value -= assign_octet[0]*2**24
+        assign_octet[1] = dec_ip_value//2**16
+        dec_ip_value -= assign_octet[1]*2**16
+        assign_octet[2] = dec_ip_value//2**8
+        assign_octet[3] = dec_ip_value%2**8
+
+        ip_quad = str(assign_octet[0]) + '.' +  str(assign_octet[1]) + '.' + \
+                  str(assign_octet[2]) + '.' +  str(assign_octet[3])
+    
+        if is_ipv4_format(ip_quad):
+            return ip_quad
+        else:
+            return False
+    except:
+        return False
 
 
 
